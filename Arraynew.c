@@ -91,6 +91,7 @@ void search(int val,int *p,int l)
    {
      if(val==*p){
        printf("Element found at %d",i+1);
+       printf("\n");
        }
    p++;
   }
