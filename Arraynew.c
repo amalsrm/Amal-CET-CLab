@@ -1,5 +1,5 @@
 #include<stdio.h>
-void insert(int val,int index,int *,int l);
+void insert(int val,int pos,int *,int l);
 void search(int val,int *,int l);
 void delete(int l,int *a,int pos);
 int main()
@@ -30,16 +30,16 @@ int main()
  scanf("%d",&choice);
  switch(choice)
  {
-  case 1:printf("Enter The Value to insert\n");
-         scanf(" %d ",&value);
-         printf("Enter Preferred Position");
+  case 1:printf("Enter Preferred Position");
          scanf("%d",&pos);
-         insert(value,pos,p,l);
+	 printf("Enter The Value to insert\n");
+         scanf("%d",&value);
+         insert(value,pos,a,l);
          break;
   case 2:
          printf("Enter The Element To Search ");
          scanf("%d",&element);
-         search(element,p,l);
+         search(element,a,l);
          break; 
   case 3:printf("Enter The position To delete: ");
          scanf("%d",&pos);
@@ -95,5 +95,4 @@ void search(int val,int *p,int l)
    p++;
   }
 }
-
 
