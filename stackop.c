@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-void insert(int val,int stack[],int top,int n)
+void insert(int val,int stack[],int top)
 {
     if (top<5)
     {
@@ -64,7 +64,7 @@ void main()
     case 1:
         printf("Enter the value to insert:\n");
         scanf("%d",&val);
-        insert(val,stack,top,n);
+        insert(val,stack,top);
         top++;
         show(top,stack);
         break;
