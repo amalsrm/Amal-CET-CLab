@@ -1,55 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
-/* ADJACENCY MATRIX */
-int source,V,E,time,visited[20],G[20][20];
-void DFS(int i)
+#include<stdio.h>
+#include<conio.h>
+int a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;
+void bfs(int v)
 {
- int j;
- visited[i]=1;
- printf(" %d->",i+1);
- 
- for(j=0;j<V;j++)
- {
- if(G[i][j]==1&&visited[j]==0)
- DFS(j);
- }
- 
+ for(i=1;i<=n;i++)
+   if(a[v][i] && !visited[i])
+     q[++r]=i;
+   if(f<=r)
+   {
+   visited[q[f]]=1;
+   printf("%d\t",q[f]);
+   bfs(q[f++]);
+   }
 }
-int main()
+void main()
 {
- int i,j,v1,v2;
- 
- printf("\t\t\tGraphs\n");
- printf("Enter the no of edges:");
- scanf("%d",&E);
- 
- printf("Enter the no of vertices:");
- scanf("%d",&V);
- 
- for(i=0;i<V;i++)
- {
- for(j=0;j<V;j++)
- G[i][j]=0;
- }
-
- /* creating edges */
- for(i=0;i<E;i++)
- {
- printf("Enter the edges (format: V1 V2) : ");
- scanf("%d%d",&v1,&v2);
- G[v1-1][v2-1]=1;
- }
- for(i=0;i<V;i++)
- {
- for(j=0;j<V;j++)
- printf(" %d ",G[i][j]);
- printf("\n");
- }
- 
- printf("Enter the source: ");
- scanf("%d",&source);
- 
- DFS(source-1);
- 
- return 0;
+int v;
+printf("Enter the no of vertices:");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+{
+ q[i]=0;
+ visited[i]=0;
+}
+printf("\nEnter graph data in matrix form:\n");
+for(i=1;i<=n;i++)
+ for(j=1;j<=n;j++)
+  scanf("%d",&a[i][j]);
+printf("\nEnter the starting vertex:");
+scanf("%d",&v);
+visited[v]=1;
+printf("%d",v);
+bfs(v);
+getch();
 }
